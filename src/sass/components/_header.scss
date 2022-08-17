@@ -1,0 +1,38 @@
+.header {
+  background: $color-background-black;
+  padding-top: 19px;
+  padding-bottom: 14.3px;
+  padding-left: 28px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &__logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    &__img {
+      width: 57.2px;
+      height: 57.7px;
+      border-radius: 30px;
+      background-color: $color-primary;
+      & img {
+        padding-top: 7px;
+      }
+    }
+    &__titre {
+      padding-top: 5px;
+    }
+  }
+  &__menu {
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}
