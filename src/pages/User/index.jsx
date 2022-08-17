@@ -1,8 +1,9 @@
 import Header from "../../components/Header"
+import Score from "../../components/Score"
 import UserBarchart from "../../components/UserBarChart"
 import UserLineChart from "../../components/UserLineChart"
 import UserRadarChart from "../../components/UserRadarChart"
-
+import Welcome from "../../components/Welcome"
 function User() {
   return (
     <div className='user'>
@@ -24,9 +25,22 @@ function User() {
             </div>
           </div>
           <div className='container__contain'>
-            <UserBarchart />
-            <UserLineChart />
-            <UserRadarChart />
+            <div className='container__welcome'>
+              <Welcome />
+            </div>
+            <div className='container__datas'>
+              <div className='container__datas__charts'>
+                <div>
+                  <UserBarchart />
+                </div>
+                <div className='container__datas__charts__inline'>
+                  <UserLineChart />
+                  <UserRadarChart />
+                  <Score />
+                </div>
+              </div>
+              <div className='container__datas__energy'></div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,23 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  padding-top: 68px;
+  gap: 40px;
+  &__title {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 24px;
+    &__bonjour {
+      color: black;
+    }
+    &__firstname {
+      padding-left: 10px;
+      color: $color-primary;
+    }
+  }
+  &__congratulations {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

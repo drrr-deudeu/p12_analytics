@@ -1,0 +1,24 @@
+.container {
+  &__contain {
+    display: flex;
+    flex-direction: column;
+    gap: 77px;
+    margin-left: 7.757vw;
+  }
+  &__datas {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    &__charts {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      &__inline {
+        display: flex;
+        flex-direction: row;
+        gap: 2vw;
+        align-items: center;
+      }
+    }
+  }
+}

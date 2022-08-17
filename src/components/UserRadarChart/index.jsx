@@ -20,7 +20,6 @@ function UserRadarChart() {
 
   return (
     <div>
-      <p>RadarChart wrapped by ResponsiveContainer</p>
       <div style={{ width: "500px", height: "500px" }}>
         <ResponsiveContainer>
           <RadarChart data={data}>
