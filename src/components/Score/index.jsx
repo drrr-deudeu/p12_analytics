@@ -4,7 +4,7 @@ const renderActiveShape = () => {
   return (
     <g>
       <text x={250} y={250} dy={8} textAnchor='middle' fill={"red"}>
-        {"hello"}
+        "hello"
       </text>
     </g>
   )
@@ -16,14 +16,14 @@ function Score(props) {
     { name: "score", value: score, fill: "green" },
   ]
   const sectors = [
-    // {
-    //   cx: 250,
-    //   cy: 250,
-    //   startAngle: 180,
-    //   endAngle: 60,
-    //   innerRadius: 100,
-    //   outerRadius: 112,
-    // },
+    {
+      cx: 250,
+      cy: 250,
+      startAngle: 180,
+      endAngle: 60,
+      innerRadius: 100,
+      outerRadius: 112,
+    },
     // {
     //   cx: 250,
     //   cy: 250,

@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 function Usage() {
   return (
     <div>
-      <a href='/user/12'>goto user 12</a>
+      <Link to='/user/12'>goto user 12</Link>
     </div>
   )
 }
