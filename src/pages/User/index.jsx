@@ -4,7 +4,13 @@ import UserBarchart from "../../components/UserBarChart"
 import UserLineChart from "../../components/UserLineChart"
 import UserRadarChart from "../../components/UserRadarChart"
 import Welcome from "../../components/Welcome"
+import { useParams } from "react-router-dom"
+import NotFound from "../NotFound"
 function User() {
+  let params = useParams()
+  if (!params.userId) {
+    return <NotFound />
+  }
   return (
     <div className='user'>
       <div>
