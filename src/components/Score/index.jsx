@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { Pie, PieChart } from "recharts"
+import { Pie, PieChart, ResponsiveContainer } from "recharts"
 const renderActiveShape = () => {
   return (
     <g>
@@ -34,23 +34,30 @@ function Score(props) {
     // },
   ]
   return (
-    <PieChart width={258} height={263}>
-      <Pie
-        cx={150}
-        cy={250}
-        endAngle={100}
-        startAngle={180 - todayScore}
-        outerRadius={200}
-        innerRadius={190}
-        data={scores}
-        sectors={sectors}
-        paddingAngle={0}
-        dataKey='value'
-        fill='#fff'
-        stroke='#000'
-        activeShape={renderActiveShape}
-      />
-    </PieChart>
+    <div style={{ width: "258px", height: "263px" }}>
+      <ResponsiveContainer>
+        <PieChart>
+          <Pie
+            cx={150}
+            cy={250}
+            endAngle={100}
+            startAngle={180 - todayScore}
+            outerRadius={200}
+            innerRadius={190}
+            data={scores}
+            sectors={sectors}
+            paddingAngle={0}
+            dataKey='value'
+            fill='#fff'
+            stroke='#000'
+            activeShape={renderActiveShape}
+          />
+          <text x={150} y={150} dy={0} textAnchor='middle' fill={"red"}>
+            hello
+          </text>
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   )
 }
 Score.propsTypes = {

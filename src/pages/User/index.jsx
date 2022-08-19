@@ -6,6 +6,7 @@ import UserRadarChart from "../../components/UserRadarChart"
 import Welcome from "../../components/Welcome"
 import { useParams } from "react-router-dom"
 import NotFound from "../NotFound"
+import Energy from "../../components/Energy"
 function User() {
   let params = useParams()
   if (!params.userId) {
@@ -45,7 +46,9 @@ function User() {
                   <Score />
                 </div>
               </div>
-              <div className='container__datas__energy'></div>
+              <div className='container__datas__energy'>
+                <Energy />
+              </div>
             </div>
           </div>
         </div>

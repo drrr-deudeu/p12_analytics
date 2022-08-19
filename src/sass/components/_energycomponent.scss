@@ -1,0 +1,57 @@
+.energy {
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+  background-color: white;
+}
+
+.cal {
+  background-color: rgba(255, 0, 0, 0.07);
+}
+.prot {
+  background: rgba(74, 184, 255, 0.1);
+}
+
+.gluc {
+  background-color: rgba(249, 206, 35, 0.1);
+}
+
+.lipi {
+  background: rgba(253, 81, 129, 0.1);
+}
+
+.energycomponent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 24px;
+  background: #fbfbfb;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+  border-radius: 5px;
+  padding: 32px;
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+  }
+  &__datas {
+    display: flex;
+    flex-direction: column;
+    &__value {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      color: #282d30;
+    }
+    &__label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      color: #74798c;
+    }
+  }
+}

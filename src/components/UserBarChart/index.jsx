@@ -6,6 +6,7 @@ import {
   Tooltip,
   CartesianGrid,
   ReferenceLine,
+  ResponsiveContainer,
 } from "recharts"
 
 function UserBarchart() {
@@ -23,16 +24,20 @@ function UserBarchart() {
   ]
 
   return (
-    <BarChart width={835} height={500} data={data}>
-      <CartesianGrid />
-      <XAxis dataKey='name' />
-      <YAxis orientation='right' />
-      <Tooltip />
-      <ReferenceLine y={0} stroke='gray' />
-      {/* <Brush dataKey='name' height={30} stroke='green' /> */}
-      <Bar dataKey='x' fill='#282D30' barSize={7} />
-      <Bar dataKey='y' fill='#E60000' barSize={7} />
-    </BarChart>
+    <div style={{ width: "835px", height: "320px" }}>
+      <ResponsiveContainer>
+        <BarChart width={835} height={500} data={data}>
+          <CartesianGrid />
+          <XAxis dataKey='name' />
+          <YAxis orientation='right' />
+          <Tooltip />
+          <ReferenceLine y={0} stroke='gray' />
+          {/* <Brush dataKey='name' height={30} stroke='green' /> */}
+          <Bar dataKey='x' fill='#282D30' barSize={7} />
+          <Bar dataKey='y' fill='#E60000' barSize={7} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   )
 }
 
