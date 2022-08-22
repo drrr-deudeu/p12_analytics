@@ -24,7 +24,7 @@ function UserBarchart() {
   ]
 
   return (
-    <div style={{ width: "835px", height: "320px" }}>
+    <div style={{ height: "320px" }}>
       <ResponsiveContainer>
         <BarChart width={835} height={500} data={data}>
           <CartesianGrid />

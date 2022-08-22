@@ -1,7 +1,6 @@
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 function UserLineChart() {
-  const width = 500
-  const height = 200
+  const height_chart = 200
   const margin = 20
   const data1 = [
     { name: "L", uv: 400, pv: 2400, amt: 2400 },
@@ -13,32 +12,35 @@ function UserLineChart() {
     { name: "D", uv: 189, pv: 4800, amt: 2400 },
   ]
   return (
-    <div
-      className='line-chart-wrapper'
-      style={{ width: "258px", height: "263px" }}>
-      <ResponsiveContainer>
-        <LineChart
-          width={width}
-          height={height}
-          data={data1}
-          margin={margin}
-          syncId='test'>
-          <Line
-            isAnimationActive={false}
-            type='monotone'
-            dataKey='uv'
-            stroke='#ff7300'
-          />
-          <Tooltip />
-          <XAxis
-            dataKey='name'
-            padding={{ left: 12, right: 12 }}
-            tickLine={false}
-            axisLine={false}
-          />
-          {/* <YAxis /> */}
-        </LineChart>
-      </ResponsiveContainer>
+    <div className='linechart'>
+      <div className='linechart__comment'>
+        <span>Durée moyenne des sessions</span>
+      </div>
+      <div className='linechart__graph'>
+        <ResponsiveContainer width='90%'>
+          <LineChart
+            height={height_chart}
+            data={data1}
+            margin={margin}
+            syncId='test'>
+            <Line
+              isAnimationActive={false}
+              type='monotone'
+              dataKey='uv'
+              stroke='#ff7300'
+            />
+            <Tooltip />
+            <XAxis
+              dataKey='name'
+              padding={{ left: 12, right: 12 }}
+              tickLine={false}
+              axisLine={false}
+              tick={{ fill: "white" }}
+            />
+            {/* <YAxis /> */}
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   )
 }

@@ -37,7 +37,7 @@ function User() {
             </div>
             <div className='container__datas'>
               <div className='container__datas__charts'>
-                <div>
+                <div className='container__datas__charts__barchart'>
                   <UserBarchart />
                 </div>
                 <div className='container__datas__charts__inline'>

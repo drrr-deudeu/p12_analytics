@@ -3,12 +3,27 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Tooltip,
   Radar,
-  LabelList,
 } from "recharts"
 function UserRadarChart() {
+  // function customTick({ payload, x, y, textAnchor, stroke, radius }) {
+  //   return (
+  //     <g className='recharts-layer recharts-polar-angle-axis-tick'>
+  //       <text
+  //         radius={radius}
+  //         stroke='#FFFFFF'
+  //         x={x}
+  //         y={y}
+  //         className='recharts-text recharts-polar-angle-axis-tick-value'
+  //         text-anchor={textAnchor}>
+  //         <tspan x={x} dy='0em'>
+  //           {payload.value}
+  //         </tspan>
+  //       </text>
+  //     </g>
+  //   )
+  // }
   const data = [
     { subject: "Intensité", A: 120, B: 110, C: [80, 120] },
     { subject: "Vitesse", A: 98, B: 130, C: [90, 113] },
@@ -19,22 +34,25 @@ function UserRadarChart() {
   ]
 
   return (
-    <div style={{ width: "258px", height: "263px" }}>
-      <ResponsiveContainer>
+    <div className='radarchart'>
+      <ResponsiveContainer width='95%'>
         <RadarChart data={data}>
-          <PolarGrid radialLines={true} />
-          <PolarAngleAxis dataKey='subject' />
-          <PolarRadiusAxis />
+          <PolarGrid radialLines={false} />
+          <PolarAngleAxis
+            dataKey='subject'
+            stroke='#FFFFFF'
+            axisLine={false}
+            tickLine={false}
+            // tick={customTick}
+          />
           <Tooltip />
           <Radar
             name='Mike'
             dataKey='A'
-            stroke='#8884d8'
-            fill='#8884d8'
-            fillOpacity={0.6}
-            connectNulls>
-            <LabelList />
-          </Radar>
+            stroke='#FF0101'
+            fill='#FF0101'
+            fillOpacity={0.7}
+            connectNulls></Radar>
         </RadarChart>
       </ResponsiveContainer>
     </div>
