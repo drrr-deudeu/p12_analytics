@@ -12,7 +12,7 @@ function UserLineChart() {
     { name: "D", uv: 189, pv: 4800, amt: 2400 },
   ]
   return (
-    <div className='linechart'>
+    <div className='container__datas__charts__inline__this linechart'>
       <div className='linechart__comment'>
         <span>Durée moyenne des sessions</span>
       </div>

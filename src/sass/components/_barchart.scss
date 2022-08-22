@@ -1,0 +1,84 @@
+.barchart {
+  height: 320px;
+  background: #fbfbfb;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+  border-radius: 5px;
+  &__legend {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 26px;
+    &__titre {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 24px;
+      color: #20253a;
+    }
+    &__xy {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+      &__x {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        &__circle {
+          min-width: 8px;
+          min-height: 8px;
+          border-radius: 4px;
+          background: #282d30;
+        }
+        &__label {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+          color: #74798c;
+        }
+      }
+      &__y {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        &__circle {
+          min-width: 8px;
+          min-height: 8px;
+          border-radius: 4px;
+          background: #e60000;
+        }
+        &__label {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+          color: #74798c;
+        }
+      }
+    }
+  }
+  &__graph {
+    padding-left: 43px;
+    height: 250px;
+    &__tooltip {
+      background: #e60000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      padding: 7px;
+      border: none;
+      & p {
+        font-weight: 500;
+        font-size: 7px;
+        line-height: 24px;
+        text-align: center;
+        color: #ffffff;
+      }
+    }
+  }
+}

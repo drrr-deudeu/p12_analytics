@@ -34,7 +34,7 @@ function Score(props) {
     // },
   ]
   return (
-    <div style={{ width: "258px", height: "263px" }}>
+    <div className='container__datas__charts__inline__this'>
       <ResponsiveContainer>
         <PieChart>
           <Pie
