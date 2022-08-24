@@ -1,14 +1,6 @@
 import PropTypes from "prop-types"
 import { Label, Pie, PieChart, ResponsiveContainer, Text } from "recharts"
-const renderActiveShape = () => {
-  return (
-    <g>
-      <text x={250} y={250} dy={8} textAnchor='middle' fill={"red"}>
-        "hello"
-      </text>
-    </g>
-  )
-}
+
 function Score(props) {
   const { score, todayScore } = props
   const scores = [
@@ -31,7 +23,7 @@ function Score(props) {
             fill='#82ca9d'>
             <Label position='center'>Coucou</Label>
           </Pie>
-          <text x={50} y={50} dy={0} textAnchor='start' fill={"red"}>
+          <text x={50} y={50} dy={0} textAnchor='start' fill={"#20253A"}>
             Score
           </text>
           <Text textAnchor='middle'>Text1</Text>
