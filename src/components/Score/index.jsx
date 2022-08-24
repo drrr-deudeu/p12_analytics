@@ -1,43 +1,64 @@
 import PropTypes from "prop-types"
-import { Label, Pie, PieChart, ResponsiveContainer, Text } from "recharts"
+import { Label, Pie, PieChart, ResponsiveContainer } from "recharts"
 
 function Score(props) {
-  const { score, todayScore } = props
+  const { todayScore } = props
   const scores = [
-    { name: "todayScore", value: todayScore, fill: "blue" },
-    { name: "score", value: score, fill: "green" },
+    {
+      name: "todayScore",
+      value: todayScore,
+      fill: "#FF0000",
+    },
   ]
 
   return (
-    <div className='container__datas__charts__inline__this'>
+    <div className='container__datas__charts__inline__this piechart'>
       <ResponsiveContainer>
-        <PieChart outerRadius={50}>
+        <PieChart outerRadius={90}>
           <Pie
             data={scores}
             dataKey='value'
             nameKey='name'
             cx='50%'
-            cy='50%'
-            innerRadius={60}
-            outerRadius={80}
-            fill='#82ca9d'>
-            <Label position='center'>Coucou</Label>
+            cy='45%'
+            innerRadius={80}
+            outerRadius={92}
+            startAngle={210}
+            endAngle={80}
+            cornerRadius={10}
+            paddingAngle={5}
+            fill='#FF0000'>
+            <Label
+              position='center'
+              dy={-15}
+              style={{ fontSize: "173%", fill: "#282D30" }}>
+              {todayScore + "%"}
+            </Label>
+            <Label
+              position='center'
+              dy={15}
+              style={{ fontSize: "107%", fill: "#74798C" }}>
+              {"de votre"}
+            </Label>
+            <Label
+              position='center'
+              dy={40}
+              style={{ fontSize: "107%", fill: "#74798C" }}>
+              {"objectif"}
+            </Label>
           </Pie>
-          <text x={50} y={50} dy={0} textAnchor='start' fill={"#20253A"}>
+          <text x={30} y={24} dy={0} textAnchor='start' fill={"#20253A"}>
             Score
           </text>
-          <Text textAnchor='middle'>Text1</Text>
         </PieChart>
       </ResponsiveContainer>
     </div>
   )
 }
 Score.propsTypes = {
-  score: PropTypes.number.isRequired,
-  todayScore: PropTypes.number.isRequired,
+  todayScore: PropTypes.number,
 }
 Score.defaultProps = {
-  score: 12,
   todayScore: 12,
 }
 
