@@ -5,7 +5,6 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-  ReferenceLine,
   ResponsiveContainer,
 } from "recharts"
 
@@ -83,8 +82,8 @@ function UserBarchart() {
               tickMargin={20}
             />
             <Tooltip content={CustomTooltip} />
-            <Bar dataKey='x' fill='#282D30' barSize={7} />
-            <Bar dataKey='y' fill='#E60000' barSize={7} />
+            <Bar dataKey='x' fill='#282D30' barSize={7} radius={[3, 3, 0, 0]} />
+            <Bar dataKey='y' fill='#E60000' barSize={7} radius={[3, 3, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

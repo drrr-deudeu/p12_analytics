@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { Pie, PieChart, ResponsiveContainer } from "recharts"
+import { Label, Pie, PieChart, ResponsiveContainer, Text } from "recharts"
 const renderActiveShape = () => {
   return (
     <g>
@@ -15,46 +15,26 @@ function Score(props) {
     { name: "todayScore", value: todayScore, fill: "blue" },
     { name: "score", value: score, fill: "green" },
   ]
-  const sectors = [
-    {
-      cx: 250,
-      cy: 250,
-      startAngle: 180,
-      endAngle: 60,
-      innerRadius: 100,
-      outerRadius: 112,
-    },
-    // {
-    //   cx: 250,
-    //   cy: 250,
-    //   startAngle: 60,
-    //   endAngle: 40,
-    //   innerRadius: 100,
-    //   outerRadius: 112,
-    // },
-  ]
+
   return (
     <div className='container__datas__charts__inline__this'>
       <ResponsiveContainer>
-        <PieChart>
+        <PieChart outerRadius={50}>
           <Pie
-            cx={150}
-            cy={250}
-            endAngle={100}
-            startAngle={180 - todayScore}
-            outerRadius={200}
-            innerRadius={190}
             data={scores}
-            sectors={sectors}
-            paddingAngle={0}
             dataKey='value'
-            fill='#fff'
-            stroke='#000'
-            activeShape={renderActiveShape}
-          />
-          <text x={150} y={150} dy={0} textAnchor='middle' fill={"red"}>
-            hello
+            nameKey='name'
+            cx='50%'
+            cy='50%'
+            innerRadius={60}
+            outerRadius={80}
+            fill='#82ca9d'>
+            <Label position='center'>Coucou</Label>
+          </Pie>
+          <text x={50} y={50} dy={0} textAnchor='start' fill={"red"}>
+            Score
           </text>
+          <Text textAnchor='middle'>Text1</Text>
         </PieChart>
       </ResponsiveContainer>
     </div>

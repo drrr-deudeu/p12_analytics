@@ -11,6 +11,15 @@ function UserLineChart() {
     { name: "S", uv: 189, pv: 4800, amt: 2400 },
     { name: "D", uv: 189, pv: 4800, amt: 2400 },
   ]
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className='linechart__graph__tooltip'>
+          <p className='label'>{`${payload[0].value}min`}</p>
+        </div>
+      )
+    }
+  }
   return (
     <div className='container__datas__charts__inline__this linechart'>
       <div className='linechart__comment'>
@@ -27,17 +36,17 @@ function UserLineChart() {
               isAnimationActive={false}
               type='monotone'
               dataKey='uv'
-              stroke='#ff7300'
+              stroke='#ffffff'
+              dot={{ strokeWidth: 0, r: 0 }}
             />
-            <Tooltip />
+            <Tooltip content={CustomTooltip} cursor={false} />
             <XAxis
               dataKey='name'
               padding={{ left: 12, right: 12 }}
               tickLine={false}
               axisLine={false}
-              tick={{ fill: "white" }}
+              tick={{ fill: "#ff7300" }}
             />
-            {/* <YAxis /> */}
           </LineChart>
         </ResponsiveContainer>
       </div>
