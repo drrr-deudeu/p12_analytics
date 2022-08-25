@@ -4,8 +4,8 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
   &__title {
+    padding-top: 30px;
     padding-left: 30px;
     font-weight: 500;
     font-size: 15px;
@@ -13,6 +13,7 @@
     color: #20253a;
   }
   &__graph {
+    height: 250px;
     padding-top: 0px;
     font-weight: 700;
     font-size: 26px;

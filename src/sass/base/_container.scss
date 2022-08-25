@@ -4,13 +4,23 @@
     flex-direction: column;
     gap: 77px;
     margin-left: 7.757vw;
+    @media (max-width: 1280px) {
+      gap: 50px;
+      margin-left: 5vw;
+    }
   }
   &__datas {
     display: flex;
     flex-direction: row;
     gap: 2vw;
+    @media (max-width: 1280px) {
+      flex-direction: column;
+    }
     &__charts {
       width: 60vw;
+      @media (max-width: 1280px) {
+        width: 100%;
+      }
       display: flex;
       flex-direction: column;
       gap: 30px;

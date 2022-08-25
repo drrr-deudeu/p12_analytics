@@ -22,7 +22,7 @@ function Score(props) {
               dataKey='value'
               nameKey='name'
               cx='50%'
-              cy='65%'
+              cy='42%'
               innerRadius={80}
               outerRadius={92}
               startAngle={210}
