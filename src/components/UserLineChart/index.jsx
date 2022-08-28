@@ -1,16 +1,22 @@
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts"
-function UserLineChart() {
+function UserLineChart({ averageSessions }) {
   const height_chart = 200
   const margin = 20
   const data1 = [
-    { name: "L", uv: 400, pv: 2400, amt: 2400 },
-    { name: "M", uv: 300, pv: 4567, amt: 2400 },
-    { name: "M", uv: 300, pv: 1398, amt: 2400 },
-    { name: "J", uv: 200, pv: 9800, amt: 2400 },
-    { name: "V", uv: 278, pv: 3908, amt: 2400 },
-    { name: "S", uv: 189, pv: 4800, amt: 2400 },
-    { name: "D", uv: 189, pv: 4800, amt: 2400 },
+    { name: "L", day: 1, sessionLength: 400 },
+    { name: "M", day: 2, sessionLength: 300 },
+    { name: "M", day: 3, sessionLength: 300 },
+    { name: "J", day: 4, sessionLength: 200 },
+    { name: "V", day: 5, sessionLength: 278 },
+    { name: "S", day: 6, sessionLength: 189 },
+    { name: "D", day: 7, sessionLength: 189 },
   ]
+  data1.map((d) => {
+    d.sessionLength = averageSessions.sessions.filter(
+      (s) => s.day === d.day
+    )[0].sessionLength
+    return 0
+  })
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -35,7 +41,7 @@ function UserLineChart() {
             <Line
               isAnimationActive={false}
               type='monotone'
-              dataKey='uv'
+              dataKey='sessionLength'
               stroke='#ffffff'
               dot={{ strokeWidth: 0, r: 0 }}
             />

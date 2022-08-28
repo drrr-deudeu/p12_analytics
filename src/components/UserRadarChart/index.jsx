@@ -6,15 +6,20 @@ import {
   Tooltip,
   Radar,
 } from "recharts"
-function UserRadarChart() {
+function UserRadarChart({ firstName, performance }) {
   const data = [
-    { subject: "Intensité", A: 120, B: 110, C: [80, 120] },
-    { subject: "Vitesse", A: 98, B: 130, C: [90, 113] },
-    { subject: "Force", A: 86, B: 130, C: [70, 134] },
-    { subject: "Endurance", A: null, B: 100, C: [88, 130] },
-    { subject: "Energie", A: 85, B: 90, C: [55, 110] },
-    { subject: "Cardio", A: 65, B: 85, C: [60, 120] },
+    { subject: "Intensité", value: null, kind: 6 },
+    { subject: "Vitesse", value: null, kind: 5 },
+    { subject: "Force", value: null, kind: 4 },
+    { subject: "Endurance", value: null, kind: 3 },
+    { subject: "Energie", value: null, kind: 2 },
+    { subject: "Cardio", value: null, kind: 1 },
   ]
+
+  data.map((d) => {
+    d.value = performance.data.filter((perf) => perf.kind === d.kind)[0].value
+    return 0
+  })
 
   return (
     <div className='container__datas__charts__inline__this radarchart'>
@@ -29,8 +34,8 @@ function UserRadarChart() {
           />
           <Tooltip />
           <Radar
-            name='Thomas'
-            dataKey='A'
+            name={firstName}
+            dataKey='value'
             stroke='#FF0101'
             fill='#FF0101'
             fillOpacity={0.7}

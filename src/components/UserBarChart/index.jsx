@@ -8,24 +8,25 @@ import {
   ResponsiveContainer,
 } from "recharts"
 
-function UserBarchart() {
-  const data = [
-    { name: 1, x: 21, y: 23 },
-    { name: 2, x: 22, y: 12 },
-    { name: 3, x: 32, y: 15 },
-    { name: 4, x: 14, y: 35 },
-    { name: 5, x: 51, y: 45 },
-    { name: 6, x: 16, y: 25 },
-    { name: 7, x: 7, y: 17 },
-    { name: 8, x: 8, y: 32 },
-    { name: 9, x: 9, y: 43 },
-    { name: 10, x: 24, y: 32 },
-  ]
+function UserBarchart(props) {
+  const sessions = props.sessions
+  // const data = [
+  //   { name: 1, x: 21, y: 23 },
+  //   { name: 2, x: 22, y: 12 },
+  //   { name: 3, x: 32, y: 15 },
+  //   { name: 4, x: 14, y: 35 },
+  //   { name: 5, x: 51, y: 45 },
+  //   { name: 6, x: 16, y: 25 },
+  //   { name: 7, x: 7, y: 17 },
+  //   { name: 8, x: 8, y: 32 },
+  //   { name: 9, x: 9, y: 43 },
+  //   { name: 10, x: 24, y: 32 },
+  // ]
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
         <div className='barchart__graph__tooltip'>
-          <p className='label'>{`${payload[0].value}g`}</p>
+          <p className='label'>{`${payload[0].value}kg`}</p>
           <p className='label'>{`${payload[1].value}Kcal`}</p>
         </div>
       )
@@ -51,7 +52,7 @@ function UserBarchart() {
       <div className='barchart__graph'>
         <ResponsiveContainer>
           <BarChart
-            data={data}
+            data={sessions}
             barGap={8}
             // margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
           >
@@ -63,10 +64,11 @@ function UserBarchart() {
             />
             <XAxis
               interval={0}
-              tickCount={10}
-              type='number'
-              domain={["dataMin", "dataMax"]}
-              dataKey='name'
+              // tickCount={sessions.length}
+              // type='number'
+              // domain={["dataMin", "dataMax"]}
+              // dataKey='day'
+              dataKey='index'
               padding={{ left: 10, right: 10 }}
               tickLine={false}
               axisLine={false}
@@ -82,8 +84,18 @@ function UserBarchart() {
               tickMargin={20}
             />
             <Tooltip content={CustomTooltip} />
-            <Bar dataKey='x' fill='#282D30' barSize={7} radius={[3, 3, 0, 0]} />
-            <Bar dataKey='y' fill='#E60000' barSize={7} radius={[3, 3, 0, 0]} />
+            <Bar
+              dataKey='kilogram'
+              fill='#282D30'
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+            <Bar
+              dataKey='calories'
+              fill='#E60000'
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

@@ -2,11 +2,11 @@ import PropTypes from "prop-types"
 import { Label, Pie, PieChart, ResponsiveContainer } from "recharts"
 
 function Score(props) {
-  const { todayScore } = props
+  const { score, todayScore } = props
   const scores = [
     {
       name: "todayScore",
-      value: todayScore,
+      value: (todayScore + score) * 100,
       fill: "#FF0000",
     },
   ]
@@ -34,7 +34,7 @@ function Score(props) {
                 position='center'
                 dy={-15}
                 style={{ fontSize: "100%", fill: "#282D30" }}>
-                {todayScore + "%"}
+                {(todayScore + score) * 100 + "%"}
               </Label>
               <Label
                 position='center'
@@ -49,9 +49,6 @@ function Score(props) {
                 {"objectif"}
               </Label>
             </Pie>
-            {/* <text x={30} y={50} dy={0} textAnchor='start' fill={"#20253A"}>
-              Score
-            </text> */}
           </PieChart>
         </ResponsiveContainer>
       </div>
@@ -59,10 +56,11 @@ function Score(props) {
   )
 }
 Score.propsTypes = {
-  todayScore: PropTypes.number,
+  score: PropTypes.number.isRequired,
+  todayScore: PropTypes.number.isRequired,
 }
-Score.defaultProps = {
-  todayScore: 12,
-}
+// Score.defaultProps = {
+//   todayScore: 12,
+// }
 
 export default Score
