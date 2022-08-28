@@ -11,16 +11,19 @@ import Energy from "../../components/Energy"
 import { useAxios } from "../../utils/useAxios"
 
 function User() {
-  let params = useParams()
+  const params = useParams()
 
   const { user, activity, averageSessions, performance, isLoading } = useAxios(
     params.userId
   )
 
-  // if (error) {
-  //   return <div>Error:{error.message}</div>
-  // }
-  if (!isLoading && user.userInfos && performance.data) {
+  if (
+    !isLoading &&
+    user.userInfos &&
+    performance.data &&
+    averageSessions.sessions &&
+    activity.sessions
+  ) {
     return (
       <div className='user'>
         <div>

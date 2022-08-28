@@ -13,11 +13,11 @@ export function useAxios(userId) {
   const [averageSessions, setAverageSessions] = useState({})
   const [performance, setPerformance] = useState({})
   const [isLoading, setLoading] = useState(false)
-  const instance = axios.create({
-    baseURL: "http://localhost:3000/user",
-    timeout: 2000,
-  })
   useEffect(() => {
+    const instance = axios.create({
+      baseURL: "http://localhost:3000/user",
+      timeout: 2000,
+    })
     if (isLoading) return
     setLoading(true)
     instance
@@ -41,8 +41,7 @@ export function useAxios(userId) {
         setActivity(USER_ACTIVITY[0])
       })
     setLoading(false)
-  }, [])
-  //   if (data.length) console.log("DATA length:" + data.length)
-  //   if (error) console.log(error)
+  }, [userId, isLoading])
+
   return { user, activity, averageSessions, performance, isLoading }
 }
