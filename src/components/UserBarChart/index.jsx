@@ -22,6 +22,15 @@ function UserBarchart(props) {
   //   { name: 9, x: 9, y: 43 },
   //   { name: 10, x: 24, y: 32 },
   // ]
+  const data = []
+  sessions.map((sess, index) =>
+    data.push({
+      ind: index + 1,
+      kilogram: sess.kilogram,
+      calories: sess.calories,
+    })
+  )
+
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -51,24 +60,15 @@ function UserBarchart(props) {
       </div>
       <div className='barchart__graph'>
         <ResponsiveContainer>
-          <BarChart
-            data={sessions}
-            barGap={8}
-            // margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
-          >
-            <CartesianGrid
-              vertical={false}
-              stroke='#DEDEDE'
-              // x={30}
-              // width={770}
-            />
+          <BarChart data={data} barGap={8}>
+            <CartesianGrid vertical={false} stroke='#DEDEDE' />
             <XAxis
               interval={0}
-              // tickCount={sessions.length}
-              // type='number'
-              // domain={["dataMin", "dataMax"]}
+              tickCount={data.length}
+              type='number'
+              domain={["dataMin", "dataMax"]}
               // dataKey='day'
-              dataKey='index'
+              dataKey='ind'
               padding={{ left: 10, right: 10 }}
               tickLine={false}
               axisLine={false}
@@ -76,12 +76,30 @@ function UserBarchart(props) {
               height={30}
             />
             <YAxis
+              yAxisId='0'
+              dataKey='calories'
+              hide={true}
+              orientation='left'
+              tickLine={false}
+              axisLine={false}
+              tick={{ fill: "#9B9EAC" }}
+              width={60}
+              tickMargin={20}
+            />
+            <YAxis
+              yAxisId='1'
+              hide={false}
+              allowDecimals={false}
+              dataKey='kilogram'
+              // domain={["dataMin" - 5, "auto"]}
+              domain={["auto", "auto"]}
               orientation='right'
               tickLine={false}
               axisLine={false}
               tick={{ fill: "#9B9EAC" }}
               width={60}
               tickMargin={20}
+              tickCount={3}
             />
             <Tooltip content={CustomTooltip} />
             <Bar
