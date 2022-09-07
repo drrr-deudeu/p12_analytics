@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts"
+import PropTypes from "prop-types"
 
 function UserBarchart(props) {
   const { series, units, legends, datakeys, colors, yaxis } = props
@@ -83,4 +84,18 @@ function UserBarchart(props) {
   )
 }
 
+UserBarchart.propsTypes = {
+  series: PropTypes.arrayOf(
+    PropTypes.shape({
+      ind: PropTypes.number.isRequired,
+      kilogram: PropTypes.number.isRequired,
+      calories: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
+  units: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  legends: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  datakeys: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  colors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  yaxis: PropTypes.number.isRequired,
+}
 export default UserBarchart

@@ -1,4 +1,6 @@
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts"
+import PropTypes from "prop-types"
+
 function UserLineChart(props) {
   const { serie, unit } = props
   const height_chart = 200
@@ -21,7 +23,6 @@ function UserLineChart(props) {
         <ResponsiveContainer width='90%'>
           <LineChart
             height={height_chart}
-            // data={data1}
             data={serie}
             margin={margin}
             syncId='test'>
@@ -45,5 +46,14 @@ function UserLineChart(props) {
       </div>
     </div>
   )
+}
+UserLineChart.propsTypes = {
+  serie: PropTypes.arrayOf(
+    PropTypes.shape({
+      pointLabel: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
+  unit: PropTypes.string.isRequired,
 }
 export default UserLineChart

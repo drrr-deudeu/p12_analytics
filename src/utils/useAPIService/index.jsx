@@ -30,6 +30,11 @@ export function useAPIService(userId, isMockData) {
       const id = parseInt(userId)
 
       let filter = USER_MAIN_DATA.filter((d) => d.id === id)
+      if (!filter.length) {
+        setError(true)
+        setErrMsg("The user id " + userId + " doesn't exist in Mock Datas")
+        return
+      }
       if (filter.length) {
         setUser(new UserInfos(filter[0]))
         setActivity(
@@ -65,10 +70,6 @@ export function useAPIService(userId, isMockData) {
         })
       })
       .catch((err) => {
-        // setUser(new UserInfos(USER_MAIN_DATA[0]))
-        // setActivity(new UserActivity(USER_ACTIVITY[0]))
-        // setAverageSessions(new UserAverageSessions(USER_AVERAGE_SESSIONS[0]))
-        // setPerformance(new UserPerformance(USER_PERFORMANCE[0]))
         setErrMsg(err.message)
         setError(true)
       })

@@ -19,8 +19,5 @@ function Welcome(props) {
 Welcome.propsTypes = {
   title: PropTypes.string.isRequired,
 }
-Welcome.defaultProps = {
-  firstName: "Thomas",
-}
 
 export default Welcome

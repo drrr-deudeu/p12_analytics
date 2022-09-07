@@ -6,8 +6,10 @@ import {
   Tooltip,
   Radar,
 } from "recharts"
+import PropTypes from "prop-types"
 
-function UserRadarChart({ performance }) {
+function UserRadarChart(props) {
+  const { performance } = props
   return (
     <div className='container__datas__charts__inline__this radarchart'>
       <ResponsiveContainer width='95%'>
@@ -31,6 +33,15 @@ function UserRadarChart({ performance }) {
       </ResponsiveContainer>
     </div>
   )
+}
+
+UserRadarChart.propsTypes = {
+  performance: PropTypes.arrayOf(
+    PropTypes.shape({
+      subject: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
 }
 
 export default UserRadarChart
