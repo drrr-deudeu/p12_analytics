@@ -5,15 +5,18 @@ import User from "./pages/User"
 import Usage from "./pages/Usage"
 import NotFound from "./pages/NotFound"
 import "./sass/main.scss"
+import { DataProvider } from "./utils/dataContext"
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Usage />}></Route>
-        <Route path='/user/:userId' element={<User />}></Route>
-        <Route path='*' element={<NotFound />}></Route>
-      </Routes>
+      <DataProvider>
+        <Routes>
+          <Route path='/' element={<Usage />}></Route>
+          <Route path='/user/:userId' element={<User />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
+        </Routes>
+      </DataProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

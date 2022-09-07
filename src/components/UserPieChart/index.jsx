@@ -1,16 +1,17 @@
 import PropTypes from "prop-types"
 import { Label, Pie, PieChart, ResponsiveContainer } from "recharts"
 
-function Score(props) {
-  const { score, todayScore } = props
+function UserPieChart(props) {
+  const { score } = props
   const scores = [
     {
-      name: "todayScore",
-      value: (todayScore + score) * 100,
+      name: "score",
+      value: score * 360,
       fill: "#FF0000",
     },
   ]
 
+  const endAngle = 210 - scores[0].value
   return (
     <div className='container__datas__charts__inline__this piechart'>
       <div className='piechart__title'>Score</div>
@@ -26,7 +27,7 @@ function Score(props) {
               innerRadius={80}
               outerRadius={92}
               startAngle={210}
-              endAngle={80}
+              endAngle={endAngle}
               cornerRadius={10}
               paddingAngle={5}
               fill='#FF0000'>
@@ -34,7 +35,7 @@ function Score(props) {
                 position='center'
                 dy={-15}
                 style={{ fontSize: "100%", fill: "#282D30" }}>
-                {(todayScore + score) * 100 + "%"}
+                {score * 100 + "%"}
               </Label>
               <Label
                 position='center'
@@ -55,12 +56,8 @@ function Score(props) {
     </div>
   )
 }
-Score.propsTypes = {
+UserPieChart.propsTypes = {
   score: PropTypes.number.isRequired,
-  todayScore: PropTypes.number.isRequired,
 }
-// Score.defaultProps = {
-//   todayScore: 12,
-// }
 
-export default Score
+export default UserPieChart

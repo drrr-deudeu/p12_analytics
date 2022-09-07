@@ -1,22 +1,45 @@
 import Header from "../../components/Header"
-import Score from "../../components/Score"
+import UserPieChart from "../../components/UserPieChart"
 import UserBarchart from "../../components/UserBarChart"
 import UserLineChart from "../../components/UserLineChart"
 import UserRadarChart from "../../components/UserRadarChart"
+import MetabolismComponent from "../../components/MetabolismComponent"
 import Welcome from "../../components/Welcome"
 import { useParams } from "react-router-dom"
-// import NotFound from "../NotFound"
-import Energy from "../../components/Energy"
 
-import { useAxios } from "../../utils/useAxios"
+import { useAPIService } from "../../utils/useAPIService"
+import { DataContext, DataProvider } from "../../utils/dataContext"
+import { useContext } from "react"
 
+/**
+ *
+ * @returns
+ */
 function User() {
   const params = useParams()
+  const { isMockdata } = useContext(DataContext)
+  const {
+    user,
+    activity,
+    averageSessions,
+    performance,
+    isLoading,
+    error,
+    errMsg,
+  } = useAPIService(params.userId, isMockdata)
 
-  const { user, activity, averageSessions, performance, isLoading } = useAxios(
-    params.userId
-  )
-
+  if (error) {
+    return (
+      <DataProvider>
+        <div className='user'>
+          <div>
+            <Header />
+          </div>
+          <div>API Service answer with error: {errMsg}</div>
+        </div>
+      </DataProvider>
+    )
+  }
   if (
     !isLoading &&
     user.userInfos &&
@@ -25,61 +48,72 @@ function User() {
     activity.sessions
   ) {
     return (
-      <div className='user'>
-        <div>
-          <Header />
-          <div className='container'>
-            <div className='left'>
-              <div className='left__icons'>
-                <div className='left__icons__icon'>
-                  <img src='/assets/LotusPosition.png' alt='lotus'></img>
-                </div>
-                <div className='left__icons__icon'>
-                  <img src='/assets/Crawl.png' alt='crawl'></img>
-                </div>
-                <div className='left__icons__icon'>
-                  <img src='/assets/Bicycle.png' alt='bicycle'></img>
-                </div>
-                <div className='left__icons__icon'>
-                  <img src='/assets/Dumbbells.png' alt='halteres'></img>
-                </div>
-              </div>
-              <div className='left__copyright'>Copiryght, SportSee 2020</div>
-            </div>
-            <div className='container__contain'>
-              <div className='container__welcome'>
-                <Welcome firstName={user.userInfos.firstName} />
-              </div>
-              <div className='container__datas'>
-                <div className='container__datas__charts'>
-                  <div className='container__datas__charts__barchart'>
-                    <UserBarchart sessions={activity.sessions} />
+      <DataProvider>
+        <div className='user'>
+          <div>
+            <Header />
+            <div className='container'>
+              <div className='left'>
+                <div className='left__icons'>
+                  <div className='left__icons__icon'>
+                    <img src='/assets/LotusPosition.png' alt='lotus'></img>
                   </div>
-                  <div className='container__datas__charts__inline'>
-                    <UserLineChart averageSessions={averageSessions} />
-                    <UserRadarChart
-                      firstName={user.userInfos.firstName}
-                      performance={performance}
-                    />
-                    <Score
-                      score={user.score ? user.score : 0}
-                      todayScore={user.todayScore ? user.todayScore : 0}
-                    />
+                  <div className='left__icons__icon'>
+                    <img src='/assets/Crawl.png' alt='crawl'></img>
+                  </div>
+                  <div className='left__icons__icon'>
+                    <img src='/assets/Bicycle.png' alt='bicycle'></img>
+                  </div>
+                  <div className='left__icons__icon'>
+                    <img src='/assets/Dumbbells.png' alt='halteres'></img>
                   </div>
                 </div>
-                <div className='container__datas__energy'>
-                  <Energy
-                    calorieCount={user.keyData.calorieCount}
-                    proteinCount={user.keyData.proteinCount}
-                    carbohydrateCount={user.keyData.carbohydrateCount}
-                    lipidCount={user.keyData.lipidCount}
-                  />
+                <div className='left__copyright'>Copiryght, SportSee 2020</div>
+              </div>
+              <div className='container__contain'>
+                <div className='container__welcome'>
+                  <Welcome firstName={user.userInfos.firstName} />
+                </div>
+                <div className='container__datas'>
+                  <div className='container__datas__charts'>
+                    <div className='container__datas__charts__barchart'>
+                      <UserBarchart
+                        series={activity.sessions}
+                        units={activity.units}
+                        legends={activity.legends}
+                        datakeys={activity.datakeys}
+                        colors={activity.colors}
+                        yaxis={activity.yaxis}
+                      />
+                    </div>
+                    <div className='container__datas__charts__inline'>
+                      <UserLineChart
+                        serie={averageSessions.sessions}
+                        unit={averageSessions.unit}
+                      />
+                      <UserRadarChart performance={performance.data} />
+                      <UserPieChart score={user.score} />
+                    </div>
+                  </div>
+                  <div className='container__datas__metabolism'>
+                    <div className='metabolism'>
+                      {user.metabolism.map((m) => (
+                        <MetabolismComponent
+                          key={m.label}
+                          label={m.label}
+                          value={m.value}
+                          icon={m.icon}
+                          className={m.className}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </DataProvider>
     )
   }
 }

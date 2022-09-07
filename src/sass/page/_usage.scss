@@ -1,4 +1,7 @@
 .usage {
   display: flex;
   flex-direction: column;
+  & button {
+    width: 100px;
+  }
 }
