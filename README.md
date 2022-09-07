@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 
+If not installed, install yarn, following instructions : [https://classic.yarnpkg.com/lang/en/docs/install](https://classic.yarnpkg.com/lang/en/docs/install)
+
 ### Clone the project
 
 ### enter in the directory project and type:
