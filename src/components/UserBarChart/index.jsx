@@ -8,7 +8,23 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import PropTypes from "prop-types"
-
+/**
+ * UserBarchart(props)
+ *
+ * const { series, units, legends, datakeys, colors, yaxis } = props
+ * @function UserBarchart
+ * @component
+ * @param {object[]} series 2 series of values 'kilogram' and 'calories' and a 'ind' as x-axis value
+ * @param {number} series.ind index on x-axis
+ * @param {number} series.kilogram weight value in kg
+ * @param {number} series.calories calories in Kcal
+ * @param {array} units array of units displayed in the recharts ToolTip
+ * @param {array} legends  Array of legends displayed a the top of the Barchart
+ * @param {array} datakeys ['kilogram','calories']
+ * @param {array} colors array of colors of the bars
+ * @param {number} yaxis serie's number used to calculated the y-axis
+ * @returns {JSX.Element} User's activity displayed in a bar chart
+ */
 function UserBarchart(props) {
   const { series, units, legends, datakeys, colors, yaxis } = props
 
@@ -84,7 +100,10 @@ function UserBarchart(props) {
   )
 }
 
-UserBarchart.propsTypes = {
+UserBarchart.propTypes = {
+  /**
+   * 2 series of values 'kilogram' and 'calories' and a 'ind' as x-axis value
+   */
   series: PropTypes.arrayOf(
     PropTypes.shape({
       ind: PropTypes.number.isRequired,
@@ -92,10 +111,26 @@ UserBarchart.propsTypes = {
       calories: PropTypes.number.isRequired,
     }).isRequired
   ).isRequired,
+  /**
+   * UserBarChart's units: array of units displayed in the recharts ToolTip
+   */
   units: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  /**
+   * legends: Array of legends displayed a the top of the Barchart
+   */
   legends: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  /**
+   * datakeys ['kilogram','calories']
+   */
   datakeys: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  /**
+   * colors: array of colors of the bars
+   */
   colors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  /**
+   * yaxis: # serie used to calculated the y-axis
+   */
   yaxis: PropTypes.number.isRequired,
 }
+
 export default UserBarchart

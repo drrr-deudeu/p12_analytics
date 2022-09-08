@@ -1,4 +1,11 @@
+/**
+ * Data model for UserRadarChart
+ */
 export class UserPerformance {
+  /**
+   *
+   * @param {json} data format of USER_PERFORMANCE in /src/datas/data.js
+   */
   constructor(data) {
     this.kind = data.kind
     this.data = [

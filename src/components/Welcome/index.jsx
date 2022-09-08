@@ -1,5 +1,10 @@
 import PropTypes from "prop-types"
-
+/**
+ *
+ * const { firstName } = props
+ * @param {string} firstName User's firstname
+ * @returns {JSX.Element} welcome message
+ */
 function Welcome(props) {
   const { firstName } = props
 
@@ -16,8 +21,8 @@ function Welcome(props) {
   )
 }
 
-Welcome.propsTypes = {
-  title: PropTypes.string.isRequired,
+Welcome.propTypes = {
+  firstName: PropTypes.string.isRequired,
 }
 
 export default Welcome

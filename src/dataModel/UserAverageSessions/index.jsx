@@ -1,4 +1,11 @@
+/**
+ * Data model for UserLineChart
+ */
 export class UserAverageSessions {
+  /**
+   *
+   * @param {json} data format of USER_AVERAGE_SESSIONS in /src/datas/data.js
+   */
   constructor(data) {
     this.sessions = [
       { pointLabel: "L", day: 1, value: 100 },

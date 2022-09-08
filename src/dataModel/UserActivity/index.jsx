@@ -1,4 +1,11 @@
+/**
+ * Data model for UserBarchart
+ */
 export class UserActivity {
+  /**
+   *
+   * @param {Json} data format of USER_ACTIVITY in /src/datas/data.js
+   */
   constructor(data) {
     this.sessions = []
     data.sessions.map((sess, index) =>

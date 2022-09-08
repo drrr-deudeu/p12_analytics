@@ -10,10 +10,9 @@ import { useParams } from "react-router-dom"
 import { useAPIService } from "../../utils/useAPIService"
 import { DataContext, DataProvider } from "../../utils/dataContext"
 import { useContext } from "react"
-
 /**
- *
- * @returns
+ * User Main Page
+ * @returns User Page
  */
 function User() {
   const params = useParams()

@@ -1,4 +1,11 @@
+/**
+ * Data model for Welcome, Score and Metabolism
+ */
 export class UserInfos {
+  /**
+   *
+   * @param {json} data format of USER_MAIN_DATA in /src/datas/data.js
+   */
   constructor(data) {
     this.userId = data.id
     this.userInfos = data.userInfos

@@ -1,6 +1,17 @@
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 import PropTypes from "prop-types"
-
+/**
+ *
+ * UserLineChart(props)
+ * const { serie, unit } = props
+ *
+ * @param {Object[]} serie array of collections
+ * @param {string} serie[].pointLabel label on x-axis
+ * @param {number} serie[].value value on y-axis
+ * @param {string[]} unit unit displayed in the Tool Tip
+ *
+ * @returns {JSX.Element} User's average sessions duration displayed in a Line chart
+ */
 function UserLineChart(props) {
   const { serie, unit } = props
   const height_chart = 200
@@ -47,7 +58,10 @@ function UserLineChart(props) {
     </div>
   )
 }
-UserLineChart.propsTypes = {
+/**
+ *
+ */
+UserLineChart.propTypes = {
   serie: PropTypes.arrayOf(
     PropTypes.shape({
       pointLabel: PropTypes.string.isRequired,

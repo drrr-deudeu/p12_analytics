@@ -7,7 +7,14 @@ import {
   Radar,
 } from "recharts"
 import PropTypes from "prop-types"
-
+/**
+ *
+ * @function UserRadarChart REACT Component
+ *
+ * @param {array} {performance} Array of collection {subject: {string}, value: {number}}
+ *
+ * @returns {JSX.Element} recharts RadarChart
+ */
 function UserRadarChart(props) {
   const { performance } = props
   return (
@@ -35,7 +42,8 @@ function UserRadarChart(props) {
   )
 }
 
-UserRadarChart.propsTypes = {
+UserRadarChart.propTypes = {
+  /** Array of collection {subject: {string}, value: {number}} */
   performance: PropTypes.arrayOf(
     PropTypes.shape({
       subject: PropTypes.string.isRequired,

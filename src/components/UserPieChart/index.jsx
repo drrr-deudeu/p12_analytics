@@ -1,6 +1,11 @@
 import PropTypes from "prop-types"
 import { Label, Pie, PieChart, ResponsiveContainer } from "recharts"
-
+/**
+ * const {score} = props
+ * @param {number} score  <=1
+ *
+ * @returns {JSX.Element} User's score displayed in a Pie Chart
+ */
 function UserPieChart(props) {
   const { score } = props
   const scores = [
@@ -56,7 +61,7 @@ function UserPieChart(props) {
     </div>
   )
 }
-UserPieChart.propsTypes = {
+UserPieChart.propTypes = {
   score: PropTypes.number.isRequired,
 }
 

@@ -11,6 +11,18 @@ import {
   USER_PERFORMANCE,
 } from "../../datas/data.js"
 
+/**
+ * Hooks to get the datas
+ * @param {string} userId number in string format
+ * @param {boolean} isMockData if true, mocked datas are displayed, else axios http requests are send to back server
+ * @returns {UserInfos} user
+ * @returns {UserActivity} activity
+ * @returns {UserAverageSessions} averageSessions
+ * @returns {UserPerformance} performance
+ * @returns {boolean} isLoading : if isLoading is true, all datas has not been yet
+ * @returns {boolean} error : error === false in case of axios error catched or user id doesn't exist in case of mocked datas
+ * @returns {string} errMsg : errMsg set in case of error===true
+ */
 export function useAPIService(userId, isMockData) {
   const [user, setUser] = useState({})
   const [activity, setActivity] = useState({})
