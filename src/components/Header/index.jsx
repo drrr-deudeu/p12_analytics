@@ -1,3 +1,7 @@
+/**
+ *
+ * @returns Header component
+ */
 function Header() {
   return (
     <div className='header'>

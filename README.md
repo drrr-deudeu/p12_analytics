@@ -2,15 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Installation
+## Installations
 
-If not installed, install yarn, following instructions : [https://classic.yarnpkg.com/lang/en/docs/install](https://classic.yarnpkg.com/lang/en/docs/install)
+If not installed, install npm. [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ### Clone the project
 
 ### enter in the directory project and type:
 
-### `yarn install --ignore-engine`
+### `npm install `
 
 ## starting the project
 
@@ -18,7 +18,7 @@ If not installed, install yarn, following instructions : [https://classic.yarnpk
 
 then, in the project directory
 
-### `yarn start`
+### `npm start`
 
 If asked, accept to start the front-end server on another IP port than 3000
 

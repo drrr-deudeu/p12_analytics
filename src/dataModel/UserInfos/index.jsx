@@ -4,7 +4,7 @@
 export class UserInfos {
   /**
    *
-   * @param {json} data format of USER_MAIN_DATA in /src/datas/data.js
+   * @param {json} data format: Cf. USER_MAIN_DATA in /src/datas/data.js
    */
   constructor(data) {
     this.userId = data.id

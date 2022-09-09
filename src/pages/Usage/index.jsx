@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { DataContext } from "../../utils/dataContext"
-
+/**
+ * This react component displays the application links availables
+ * and a button allowing the user to switch between back server's datas and the mocked datas
+ * @returns Usage component
+ */
 function Usage() {
   const { toggleData, isMockdata } = useContext(DataContext)
 

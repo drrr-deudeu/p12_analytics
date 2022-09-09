@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 import Header from "../../components/Header"
-
+/**
+ *
+ * @returns NotFound component
+ */
 function NotFound() {
   return (
     <div className='page_container'>

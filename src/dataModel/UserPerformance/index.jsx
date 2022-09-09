@@ -4,7 +4,7 @@
 export class UserPerformance {
   /**
    *
-   * @param {json} data format of USER_PERFORMANCE in /src/datas/data.js
+   * @param {json} data format: Cf. USER_PERFORMANCE in /src/datas/data.js
    */
   constructor(data) {
     this.kind = data.kind

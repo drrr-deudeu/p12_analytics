@@ -7,6 +7,9 @@ import NotFound from "./pages/NotFound"
 import "./sass/main.scss"
 import { DataProvider } from "./utils/dataContext"
 const root = ReactDOM.createRoot(document.getElementById("root"))
+/**
+ * The App's Routes
+ */
 root.render(
   <React.StrictMode>
     <BrowserRouter>

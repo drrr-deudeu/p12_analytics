@@ -4,7 +4,7 @@
 export class UserAverageSessions {
   /**
    *
-   * @param {json} data format of USER_AVERAGE_SESSIONS in /src/datas/data.js
+   * @param {json} data format: Cf. USER_AVERAGE_SESSIONS in /src/datas/data.js
    */
   constructor(data) {
     this.sessions = [

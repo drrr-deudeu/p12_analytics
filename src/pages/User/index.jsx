@@ -12,7 +12,8 @@ import { DataContext, DataProvider } from "../../utils/dataContext"
 import { useContext } from "react"
 /**
  * User Main Page
- * @returns User Page
+ * See also /src/index.js
+ * @returns User Page.
  */
 function User() {
   const params = useParams()
