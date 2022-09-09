@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Header/index.jsx</title>
+    <title>JSDoc: Source: utils/dataContext/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Header/index.jsx</h1>
+    <h1 class="page-title">Source: utils/dataContext/index.jsx</h1>
 
     
 
@@ -26,32 +26,30 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
+            <pre class="prettyprint source linenums"><code>import { createContext, useState } from "react"
+
+/**
  *
- * @returns Header component
+ * React Context
+ *
  */
-function Header() {
+export const DataContext = createContext()
+/**
+ * React component allowing to share the isMockData boolean value for all pages.
+ * @param {JSX.Element} param0
+ */
+export const DataProvider = ({ children }) => {
+  const [isMockdata, setIsMockData] = useState(false)
+  const toggleData = () => {
+    setIsMockData((prev) => !prev)
+  }
+
   return (
-    &lt;div className='header'>
-      &lt;div className='header__logo'>
-        &lt;div className='header__logo__img'>
-          &lt;img src='/assets/Runner.png' alt='SportSee logo'>&lt;/img>
-        &lt;/div>
-        &lt;div className='header__logo__titre'>
-          &lt;img src='/assets/sportsee_titre.png' alt='SportSee'>&lt;/img>
-        &lt;/div>
-      &lt;/div>
-      &lt;div className='header__menu'>
-        &lt;div className='header__menu__item textes'>Accueil&lt;/div>
-        &lt;div className='header__menu__item textes'>Profil&lt;/div>
-        &lt;div className='header__menu__item textes'>Réglage&lt;/div>
-        &lt;div className='header__menu__item textes'>Communauté&lt;/div>
-      &lt;/div>
-    &lt;/div>
+    &lt;DataContext.Provider value={{ isMockdata, toggleData }}>
+      {children}
+    &lt;/DataContext.Provider>
   )
 }
-
-export default Header
 </code></pre>
         </article>
     </section>

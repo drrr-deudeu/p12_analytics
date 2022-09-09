@@ -16,7 +16,10 @@ import { useContext } from "react"
  * @returns User Page.
  */
 function User() {
+  // get URL parameter: userId
   const params = useParams()
+
+  // get boolean value isMockData from the context DataContext
   const { isMockdata } = useContext(DataContext)
   const {
     user,
