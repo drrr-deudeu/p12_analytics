@@ -1,7 +1,16 @@
 .usage {
   display: flex;
   flex-direction: column;
-  & button {
-    width: 100px;
+  &__links{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    & button {
+      width: 100px;
+    }
   }
+ 
 }

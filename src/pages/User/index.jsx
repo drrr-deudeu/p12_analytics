@@ -1,4 +1,5 @@
 import Header from "../../components/Header"
+import Left from "../../components/Left"
 import UserPieChart from "../../components/UserPieChart"
 import UserBarchart from "../../components/UserBarChart"
 import UserLineChart from "../../components/UserLineChart"
@@ -56,23 +57,7 @@ function User() {
           <div>
             <Header />
             <div className='container'>
-              <div className='left'>
-                <div className='left__icons'>
-                  <div className='left__icons__icon'>
-                    <img src='/assets/LotusPosition.png' alt='lotus'></img>
-                  </div>
-                  <div className='left__icons__icon'>
-                    <img src='/assets/Crawl.png' alt='crawl'></img>
-                  </div>
-                  <div className='left__icons__icon'>
-                    <img src='/assets/Bicycle.png' alt='bicycle'></img>
-                  </div>
-                  <div className='left__icons__icon'>
-                    <img src='/assets/Dumbbells.png' alt='halteres'></img>
-                  </div>
-                </div>
-                <div className='left__copyright'>Copiryght, SportSee 2020</div>
-              </div>
+              <Left />
               <div className='container__contain'>
                 <div className='container__welcome'>
                   <Welcome firstName={user.userInfos.firstName} />
