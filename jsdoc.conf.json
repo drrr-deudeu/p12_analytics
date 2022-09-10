@@ -10,7 +10,7 @@
   },
   "plugins": ["plugins/markdown"],
   "opts": {
-    "destination": "docs",
+    "destination": "public/docs",
     "recurse": true,
     "readme": "README.md"
   },
