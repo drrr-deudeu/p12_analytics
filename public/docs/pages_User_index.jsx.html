@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/User/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/User/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Header from "../../components/Header"
+import UserPieChart from "../../components/UserPieChart"
+import UserBarchart from "../../components/UserBarChart"
+import UserLineChart from "../../components/UserLineChart"
+import UserRadarChart from "../../components/UserRadarChart"
+import MetabolismComponent from "../../components/MetabolismComponent"
+import Welcome from "../../components/Welcome"
+import { useParams } from "react-router-dom"
+
+import { useAPIService } from "../../utils/useAPIService"
+import { DataContext, DataProvider } from "../../utils/dataContext"
+import { useContext } from "react"
+/**
+ * User Main Page
+ * See also /src/index.js
+ * @returns User Page.
+ */
+function User() {
+  // get URL parameter: userId
+  const params = useParams()
+
+  // get boolean value isMockData from the context DataContext
+  const { isMockdata } = useContext(DataContext)
+  const {
+    user,
+    activity,
+    averageSessions,
+    performance,
+    isLoading,
+    error,
+    errMsg,
+  } = useAPIService(params.userId, isMockdata)
+
+  if (error) {
+    return (
+      &lt;DataProvider>
+        &lt;div className='user'>
+          &lt;div>
+            &lt;Header />
+          &lt;/div>
+          &lt;div>API Service answer with error: {errMsg}&lt;/div>
+        &lt;/div>
+      &lt;/DataProvider>
+    )
+  }
+  if (
+    !isLoading &amp;&amp;
+    user.userInfos &amp;&amp;
+    performance.data &amp;&amp;
+    averageSessions.sessions &amp;&amp;
+    activity.sessions
+  ) {
+    return (
+      &lt;DataProvider>
+        &lt;div className='user'>
+          &lt;div>
+            &lt;Header />
+            &lt;div className='container'>
+              &lt;div className='left'>
+                &lt;div className='left__icons'>
+                  &lt;div className='left__icons__icon'>
+                    &lt;img src='/assets/LotusPosition.png' alt='lotus'>&lt;/img>
+                  &lt;/div>
+                  &lt;div className='left__icons__icon'>
+                    &lt;img src='/assets/Crawl.png' alt='crawl'>&lt;/img>
+                  &lt;/div>
+                  &lt;div className='left__icons__icon'>
+                    &lt;img src='/assets/Bicycle.png' alt='bicycle'>&lt;/img>
+                  &lt;/div>
+                  &lt;div className='left__icons__icon'>
+                    &lt;img src='/assets/Dumbbells.png' alt='halteres'>&lt;/img>
+                  &lt;/div>
+                &lt;/div>
+                &lt;div className='left__copyright'>Copiryght, SportSee 2020&lt;/div>
+              &lt;/div>
+              &lt;div className='container__contain'>
+                &lt;div className='container__welcome'>
+                  &lt;Welcome firstName={user.userInfos.firstName} />
+                &lt;/div>
+                &lt;div className='container__datas'>
+                  &lt;div className='container__datas__charts'>
+                    &lt;div className='container__datas__charts__barchart'>
+                      &lt;UserBarchart
+                        series={activity.sessions}
+                        units={activity.units}
+                        legends={activity.legends}
+                        datakeys={activity.datakeys}
+                        colors={activity.colors}
+                        yaxis={activity.yaxis}
+                      />
+                    &lt;/div>
+                    &lt;div className='container__datas__charts__inline'>
+                      &lt;UserLineChart
+                        serie={averageSessions.sessions}
+                        unit={averageSessions.unit}
+                      />
+                      &lt;UserRadarChart performance={performance.data} />
+                      &lt;UserPieChart score={user.score} />
+                    &lt;/div>
+                  &lt;/div>
+                  &lt;div className='container__datas__metabolism'>
+                    &lt;div className='metabolism'>
+                      {user.metabolism.map((m) => (
+                        &lt;MetabolismComponent
+                          key={m.label}
+                          label={m.label}
+                          value={m.value}
+                          icon={m.icon}
+                          className={m.className}
+                        />
+                      ))}
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/DataProvider>
+    )
+  }
+}
+export default User
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UserActivity.html">UserActivity</a></li><li><a href="UserAverageSessions.html">UserAverageSessions</a></li><li><a href="UserInfos.html">UserInfos</a></li><li><a href="UserPerformance.html">UserPerformance</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DataContext">DataContext</a></li><li><a href="global.html#DataProvider">DataProvider</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#MetabolismComponent">MetabolismComponent</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#Usage">Usage</a></li><li><a href="global.html#useAPIService">useAPIService</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserBarchart">UserBarchart</a></li><li><a href="global.html#UserLineChart">UserLineChart</a></li><li><a href="global.html#UserPieChart">UserPieChart</a></li><li><a href="global.html#UserRadarChartREACTComponent">UserRadarChart REACT Component</a></li><li><a href="global.html#Welcome">Welcome</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Sep 09 2022 20:11:29 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
